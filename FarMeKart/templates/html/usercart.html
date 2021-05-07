@@ -1,0 +1,35 @@
+{% extends 'html/header.html' %}
+{% block content %}
+{% load static %}
+<div class="container">
+<form method="post">
+	{% csrf_token %}
+<table class="table table-hover">
+	<tr>
+		<th>Sno</th>
+		<th>item name</th>
+		<th>Quantity</th>
+		<th>Price</th>
+		<th>Actions</th>
+	</tr>
+	{% for k in cart %}
+	<tr>
+		<td>{{forloop.counter}}</td>
+		<td>{{k.item_name}}</td>
+		<td>{{k.quantity}}</td>
+		<td>{{k.price}}</td>
+		<td><a href="#" class="btn btn-info">Remove</a></td>
+	</tr>
+	{% endfor %}
+	<tr>
+		<td></td>
+		<td>total</td>
+		<td></td>
+		<td>{{sum}}</td>
+		<td><a href="#" class="btn-danger">Ordercontinue</a></td>
+	</tr>
+</table>
+</form>
+</div>
+
+{% endblock %}
